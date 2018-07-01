@@ -14,25 +14,27 @@ Servo lAnkle;
 /*
  Functions
  */
-void Servogui;
+void servogui();
+void initialpos();
 
 void setup() {
-rHip.attach();
-rKnee.attach();
-rAnkle.attach();
+rHip.attach(11);
+rKnee.attach(10);
+rAnkle.attach(9);
 
-rHip.attach();
-rKnee.attach();
-rAnkle.attach();
+rHip.attach(6);
+rKnee.attach(5);
+rAnkle.attach(3);
 
 Serial.begin(115200);
 }
 
 void loop() {
-  servogui;
+  servogui();
+
 }
 
-void Servogui(){
+void servogui(){
   float n = 0;
     static int v = 0;
 
@@ -50,7 +52,7 @@ void Servogui(){
           break;
         case 'w':
           n = map(v, 0, 180, 0, 180);
-          rHip.write(v);
+          lHip.write(v);
           v = 0;
           break;
         case 'a':
@@ -63,8 +65,16 @@ void Servogui(){
           lKnee.write(v);
           v = 0;
           break;
-      }
+        case 'z':
+          n = map(v, 0, 180, 0, 180);
+          rAnkle.write(v);
+          v = 0;
+          break;
+        case 'x':
+          n = map(v, 0, 180, 0, 180);
+          lAnkle.write(v);
+          v = 0;
+          break;
+        }
     }
-
-
 }
