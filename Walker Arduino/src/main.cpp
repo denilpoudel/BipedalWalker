@@ -18,13 +18,13 @@ void servogui();
 void initialpos();
 
 void setup() {
-rHip.attach(11);
-rKnee.attach(10);
-rAnkle.attach(9);
+lHip.attach(11);
+lKnee.attach(10);
+lAnkle.attach(9);
 
-lHip.attach(6);
-lKnee.attach(5);
-lAnkle.attach(3);
+rHip.attach(6);
+rKnee.attach(5);
+rAnkle.attach(3);
 
 Serial.begin(115200);
 }

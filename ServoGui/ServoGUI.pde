@@ -9,7 +9,7 @@ PImage robot;
 void setup() {
   size(600, 800);
   robot = loadImage("robot.jpg");
-  port = new Serial(this, Serial.list()[1], 115200); 
+  port = new Serial(this, "COM3", 115200); 
 
   cp5 = new ControlP5(this);
 
@@ -50,6 +50,8 @@ void setup() {
     .setRange(0, 180)
     ;
     
+    cp5.addBang("Reset")
+    .setPosition(265,122);
 }
 
 void draw() {
@@ -85,5 +87,15 @@ void rAnkle(int pos){
 }
 void lAnkle(int pos){
  port.write("x" +pos);
+}
+
+void Reset(){
+  cp5.getController ("rHip").setValue(90);
+  cp5.getController ("lHip").setValue(90);
+  cp5.getController ("rKnee").setValue(90);
+  cp5.getController ("lKnee").setValue(90);
+  cp5.getController ("rAnkle").setValue(90);
+  cp5.getController ("lAnkle").setValue(90);
   
+  port.write('p');
 }
